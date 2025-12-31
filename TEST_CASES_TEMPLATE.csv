@@ -1,0 +1,211 @@
+Test Case ID,Test Case Name,Test Type,Priority,Preconditions,Test Steps,Expected Result,Actual Result,Status,Notes
+TC-001,Create task with valid title,Automated,High,Application running,"1. Send POST request to /api/tasks
+2. Include title in JSON body","Task created with status 201
+Task has title and default values",,,
+TC-002,Create task without title,Automated,High,Application running,"1. Send POST request to /api/tasks
+2. Omit title from JSON body","Request fails with status 400",,,
+TC-003,Create task with all fields,Automated,Medium,Application running,"1. Send POST request with title, description, priority, due_date","Task created with all fields populated",,,
+TC-004,Create task with default priority,Automated,Medium,Application running,"1. Send POST request with only title","Task created with priority='medium'",,,
+TC-005,Create task with high priority,Automated,Medium,Application running,"1. Send POST request with priority='high'","Task created with priority='high'",,,
+TC-006,Create task with low priority,Automated,Medium,Application running,"1. Send POST request with priority='low'","Task created with priority='low'",,,
+TC-007,Create task with empty description,Automated,Low,Application running,"1. Send POST request with empty description","Task created with description=''",,,
+TC-008,Create task with long title,Automated,Low,Application running,"1. Send POST request with 200 character title","Task created successfully",,,
+TC-009,Created task has created_at timestamp,Automated,Medium,Application running,"1. Create task
+2. Check response","Response includes created_at field",,,
+TC-010,Created task has unique ID,Automated,High,Application running,"1. Create two tasks
+2. Compare IDs","IDs are different and sequential",,,
+TC-011,Get all tasks when empty,Automated,Medium,Application running,"1. Send GET request to /api/tasks
+2. No tasks exist","Returns empty array []",,,
+TC-012,Get all tasks with data,Automated,Medium,Application running,"1. Create 2 tasks
+2. Send GET request","Returns array with 2 tasks",,,
+TC-013,Get task by ID when exists,Automated,High,Application running,"1. Create task
+2. Get task by ID","Returns task with matching ID",,,
+TC-014,Get task by ID when not exists,Automated,Medium,Application running,"1. Send GET request for non-existent ID","Returns 404 error",,,
+TC-015,Filter tasks by status pending,Automated,Medium,Application running,"1. Create tasks with different statuses
+2. Filter by status=pending","Returns only pending tasks",,,
+TC-016,Filter tasks by status completed,Automated,Medium,Application running,"1. Create completed tasks
+2. Filter by status=completed","Returns only completed tasks",,,
+TC-017,Filter tasks by priority high,Automated,Medium,Application running,"1. Create tasks with different priorities
+2. Filter by priority=high","Returns only high priority tasks",,,
+TC-018,Filter tasks by priority low,Automated,Low,Application running,"1. Create low priority tasks
+2. Filter by priority=low","Returns only low priority tasks",,,
+TC-019,Filter tasks by status and priority,Automated,Medium,Application running,"1. Create various tasks
+2. Filter by status and priority","Returns tasks matching both criteria",,,
+TC-020,Get task returns all fields,Automated,Medium,Application running,"1. Create task with all fields
+2. Get task by ID","Response includes all task fields",,,
+TC-021,Update task status,Automated,High,Application running,"1. Create task
+2. Update status to completed","Task status updated to completed",,,
+TC-022,Update task title,Automated,High,Application running,"1. Create task
+2. Update title","Task title updated",,,
+TC-023,Update task description,Automated,Medium,Application running,"1. Create task
+2. Update description","Task description updated",,,
+TC-024,Update task priority,Automated,Medium,Application running,"1. Create task with low priority
+2. Update to high priority","Task priority updated",,,
+TC-025,Update task due date,Automated,Low,Application running,"1. Create task
+2. Update due_date","Task due_date updated",,,
+TC-026,Update multiple task fields,Automated,Medium,Application running,"1. Create task
+2. Update title, status, priority together","All fields updated",,,
+TC-027,Update task that doesn't exist,Automated,Medium,Application running,"1. Send PUT request for non-existent ID","Returns 404 error",,,
+TC-028,Update task updates timestamp,Automated,Low,Application running,"1. Create task
+2. Wait 1 second
+3. Update task
+4. Check updated_at","updated_at changed, created_at unchanged",,,
+TC-029,Update task preserves other fields,Automated,Medium,Application running,"1. Create task with all fields
+2. Update only status","Other fields remain unchanged",,,
+TC-030,Update task with empty JSON,Automated,Low,Application running,"1. Create task
+2. Send PUT with empty JSON","Request succeeds, no changes",,,
+TC-031,Delete task that exists,Automated,High,Application running,"1. Create task
+2. Delete task by ID","Task deleted, returns 200",,,
+TC-032,Delete task that doesn't exist,Automated,Medium,Application running,"1. Send DELETE request for non-existent ID","Returns 404 error",,,
+TC-033,Delete task removes from list,Automated,High,Application running,"1. Create 2 tasks
+2. Delete first task
+3. Get all tasks","Only second task remains",,,
+TC-034,Delete all tasks,Automated,Low,Application running,"1. Create 3 tasks
+2. Delete all tasks
+3. Get all tasks","Empty array returned",,,
+TC-035,Delete task returns success message,Automated,Low,Application running,"1. Create task
+2. Delete task","Response includes success message",,,
+TC-036,Singleton pattern for Config,Automated,Low,Application running,"1. Create two Config instances
+2. Compare instances","Instances are the same object",,,
+TC-037,Factory pattern creates task,Automated,Low,Application running,"1. Use TaskFactory.create_task()
+2. Verify task structure","Task created with correct structure",,,
+TC-038,Observer pattern notification,Automated,Low,Application running,"1. Add observer to TaskManager
+2. Create task
+3. Check notifications","Observer receives notification",,,
+TC-039,TaskManager maintains state,Automated,Low,Application running,"1. Create TaskManager instance
+2. Create another instance
+3. Verify shared state","Both instances share same data",,,
+TC-040,Factory creates unique IDs,Automated,Medium,Application running,"1. Create two tasks using factory
+2. Compare IDs","IDs are unique and sequential",,,
+TC-041,Create multiple tasks sequentially,Automated,Low,Application running,"1. Create 10 tasks in loop
+2. Verify all created","All 10 tasks created successfully",,,
+TC-042,Get tasks after multiple operations,Automated,Medium,Application running,"1. Create, update, delete tasks
+2. Get all tasks
+3. Verify final state","Final state matches operations",,,
+TC-043,Task persistence,Automated,High,Application running,"1. Create task
+2. Create new TaskManager instance
+3. Verify task exists","Task persists across instances",,,
+TC-044,Task ID increment,Automated,Medium,Application running,"1. Create 3 tasks
+2. Verify IDs increment","IDs increment correctly (1,2,3)",,,
+TC-045,Filter empty result,Automated,Low,Application running,"1. Create low priority task
+2. Filter by high priority","Returns empty array",,,
+TC-046,Update nonexistent field,Automated,Low,Application running,"1. Create task
+2. Update with nonexistent field","Request succeeds, field ignored",,,
+TC-047,Create task special characters,Automated,Low,Application running,"1. Create task with special chars
+2. Verify saved","Special characters saved correctly",,,
+TC-048,Create task Unicode,Automated,Medium,Application running,"1. Create task with Arabic text
+2. Verify saved","Unicode characters saved correctly",,,
+TC-049,API endpoints exist,Automated,High,Application running,"1. Test all API endpoints
+2. Verify responses","All endpoints respond correctly",,,
+TC-050,Home page loads,Automated,Medium,Application running,"1. Send GET request to /
+2. Verify response","Returns 200 with HTML",,,
+TC-051,Create task with title only (Manual),Manual,High,Application running,"1. Open browser to localhost:5000
+2. Enter task title only
+3. Click Add Task","Task appears in list with default values",,,
+TC-052,Create task with all fields (Manual),Manual,High,Application running,"1. Fill all form fields
+2. Click Add Task","Task appears with all entered data",,,
+TC-053,Create task without title (Manual),Manual,High,Application running,"1. Leave title empty
+2. Try to add task","Task not added, error shown",,,
+TC-054,Create task low priority (Manual),Manual,Medium,Application running,"1. Select low priority
+2. Add task","Task shows with green priority badge",,,
+TC-055,Create task high priority (Manual),Manual,Medium,Application running,"1. Select high priority
+2. Add task","Task shows with red priority badge",,,
+TC-056,Create task medium priority (Manual),Manual,Medium,Application running,"1. Select medium priority
+2. Add task","Task shows with yellow priority badge",,,
+TC-057,Create task with long description (Manual),Manual,Low,Application running,"1. Enter very long description
+2. Add task","Task saved with full description",,,
+TC-058,Create task without description (Manual),Manual,Low,Application running,"1. Leave description empty
+2. Add task","Task shows 'لا يوجد وصف'",,,
+TC-059,Create task with due date (Manual),Manual,Medium,Application running,"1. Select due date
+2. Add task","Task saved with due date",,,
+TC-060,Create task without due date (Manual),Manual,Low,Application running,"1. Leave due date empty
+2. Add task","Task saved without due date",,,
+TC-061,Create multiple tasks sequentially (Manual),Manual,Medium,Application running,"1. Create 5 tasks one after another
+2. Verify all appear","All tasks appear in list",,,
+TC-062,Create task Arabic text (Manual),Manual,Medium,Application running,"1. Enter Arabic text
+2. Add task","Arabic text displayed correctly",,,
+TC-063,Create task English text (Manual),Manual,Low,Application running,"1. Enter English text
+2. Add task","English text displayed correctly",,,
+TC-064,Create task mixed text (Manual),Manual,Low,Application running,"1. Enter mixed Arabic/English
+2. Add task","Mixed text displayed correctly",,,
+TC-065,Create task special characters (Manual),Manual,Low,Application running,"1. Enter special characters
+2. Add task","Special characters displayed correctly",,,
+TC-066,View empty task list (Manual),Manual,Low,Application running,"1. Open app with no tasks
+2. View list","Empty list or message shown",,,
+TC-067,View task list with data (Manual),Manual,Medium,Application running,"1. Create 10 tasks
+2. View list","All tasks displayed in grid",,,
+TC-068,View task details (Manual),Manual,High,Application running,"1. Click on task
+2. View details page","Task details page shows all info",,,
+TC-069,Verify priority display (Manual),Manual,Medium,Application running,"1. Create tasks with different priorities
+2. Verify colors","Colors match priority levels",,,
+TC-070,Verify status display (Manual),Manual,Medium,Application running,"1. Create tasks with different statuses
+2. Verify display","Status badges display correctly",,,
+TC-071,Responsive grid layout (Manual),Manual,Low,Application running,"1. Resize browser window
+2. Observe layout","Grid adapts to window size",,,
+TC-072,Task order verification (Manual),Manual,Low,Application running,"1. Create tasks in order
+2. Verify order in list","Tasks appear in creation order",,,
+TC-073,Display creation date (Manual),Manual,Low,Application running,"1. Create task
+2. View details","Creation date displayed correctly",,,
+TC-074,Display update date (Manual),Manual,Low,Application running,"1. Create and update task
+2. View details","Update date displayed correctly",,,
+TC-075,Display due date (Manual),Manual,Low,Application running,"1. Create task with due date
+2. View details","Due date displayed correctly",,,
+TC-076,Update task status to completed (Manual),Manual,High,Application running,"1. Create pending task
+2. Click Complete button","Status changes to completed",,,
+TC-077,Update completed task status (Manual),Manual,Low,Application running,"1. Create completed task
+2. Try to change status","Status can be changed (if allowed)",,,
+TC-078,Update task title via API (Manual),Manual,Medium,Application running,"1. Create task
+2. Use Postman to update title","Title updated successfully",,,
+TC-079,Update task description (Manual),Manual,Medium,Application running,"1. Create task
+2. Use API to update description","Description updated successfully",,,
+TC-080,Update task priority (Manual),Manual,Medium,Application running,"1. Create low priority task
+2. Update to high priority","Priority updated successfully",,,
+TC-081,Update task due date (Manual),Manual,Low,Application running,"1. Create task
+2. Update due date via API","Due date updated successfully",,,
+TC-082,Update multiple fields (Manual),Manual,Medium,Application running,"1. Create task
+2. Update title, status, priority together","All fields updated",,,
+TC-083,Update non-existent task (Manual),Manual,Medium,Application running,"1. Try to update ID 9999
+2. Check response","404 error returned",,,
+TC-084,Verify timestamp update (Manual),Manual,Low,Application running,"1. Create task
+2. Note creation time
+3. Wait and update
+4. Check update time","Update time changed, creation time same",,,
+TC-085,Update with empty fields (Manual),Manual,Low,Application running,"1. Create task
+2. Send empty update request","No changes or error returned",,,
+TC-086,Delete existing task (Manual),Manual,High,Application running,"1. Create task
+2. Click Delete button
+3. Confirm","Task deleted from list",,,
+TC-087,Cancel task deletion (Manual),Manual,Medium,Application running,"1. Create task
+2. Click Delete
+3. Click Cancel","Task remains in list",,,
+TC-088,Delete non-existent task (Manual),Manual,Low,Application running,"1. Try to delete ID 9999
+2. Check response","404 error returned",,,
+TC-089,Delete all tasks (Manual),Manual,Low,Application running,"1. Create multiple tasks
+2. Delete all one by one","List becomes empty",,,
+TC-090,Verify deletion persistence (Manual),Manual,High,Application running,"1. Create task
+2. Delete it
+3. Reload page","Task does not reappear",,,
+TC-091,Responsive design (Manual),Manual,Medium,Application running,"1. Open on large screen
+2. Resize to small
+3. Observe","Layout adapts responsively",,,
+TC-092,Colors and fonts (Manual),Manual,Low,Application running,"1. View application
+2. Check styling","Beautiful and consistent design",,,
+TC-093,Hover effects (Manual),Manual,Low,Application running,"1. Hover over task card
+2. Observe effect","Hover effect appears",,,
+TC-094,Form layout (Manual),Manual,Low,Application running,"1. View add task form
+2. Check organization","Form is well organized",,,
+TC-095,Error messages (Manual),Manual,Medium,Application running,"1. Try invalid input
+2. Check messages","Clear error messages shown",,,
+TC-096,Performance with many tasks (Manual),Manual,Low,Application running,"1. Create 100 tasks
+2. Check load time","Reasonable performance",,,
+TC-097,Navigation (Manual),Manual,Low,Application running,"1. Open task details
+2. Click back link","Navigation works correctly",,,
+TC-098,Browser compatibility (Manual),Manual,Medium,Application running,"1. Test in Chrome
+2. Test in Firefox
+3. Test in Edge","Works in all browsers",,,
+TC-099,Accessibility (Manual),Manual,Low,Application running,"1. Navigate with keyboard
+2. Use screen reader","Application is accessible",,,
+TC-100,Local storage persistence (Manual),Manual,High,Application running,"1. Create tasks
+2. Close browser
+3. Reopen application","Tasks persist and appear",,,
+

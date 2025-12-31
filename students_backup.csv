@@ -1,0 +1,8 @@
+course_id,student_id,name,email,grade,enrolled_at
+4,S001,أحمد محمد,ahmed@example.com,,2025-12-23T00:27:29.571570
+4,S002,فاطمة علي,fatima@example.com,b+,2025-12-23T00:27:29.603483
+4,S003,محمد سالم,mohamed@example.com,95,2025-12-23T00:27:29.605478
+4,S004,سارة أحمد,sara@example.com,B,2025-12-23T00:27:29.609466
+4,S005,علي حسن,ali@example.com,A,2025-12-23T00:27:29.611462
+5,S001,أحمد محمد,ahmed@example.com,A,2025-12-23T00:27:29.614454
+6,S001,أحمد محمد,ahmed@example.com,A,2025-12-23T00:27:29.616447
